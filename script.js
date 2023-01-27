@@ -1,5 +1,4 @@
 // Dados iniciais
-
 let square = {
   a1: "",
   a2: "",
@@ -14,7 +13,7 @@ let square = {
   c3: "",
 };
 
-let player = 'x' || 'o';
+let player = "x" || "o";
 let warning = "";
 let playing = false;
 
@@ -58,7 +57,7 @@ function reset() {
 
 function renderSquare() {
   for (let i in square) {
-    let item = document.querySelector(`div[data-item="${i}"]`);
+    let item = document.querySelector(`div[data-item=${i}]`);
     item.innerHTML = square[i];
   }
 
@@ -79,7 +78,7 @@ function checkGame() {
   if (checkWinnerFor("x")) {
     warning = 'O "x" venceu';
     playing = false;
-  } else if(checkWinnerFor("o")) {
+  } else if (checkWinnerFor("o")) {
     warning = 'O "o" venceu';
     playing = false;
   } else if (isFull()) {
