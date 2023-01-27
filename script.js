@@ -36,8 +36,8 @@ function itemClick(event) {
   }
 
   event.target.textContent === "x"
-    ? (event.target.style.color = "red")
-    : (event.target.style.color = "blue");
+    ? event.target.classList.add("red")
+    : event.target.classList.add("blue");
 }
 function reset() {
   warning = "";
@@ -48,6 +48,19 @@ function reset() {
   for (let i in square) {
     square[i] = "";
   }
+
+  for (let i in square) {
+    document.querySelector(`[data-item=${i}]`).style.color = "";
+    square[i] = "";
+  }
+
+  document.querySelectorAll(".red").forEach((item) => {
+    item.classList.remove("red");
+  });
+
+  document.querySelectorAll(".blue").forEach((item) => {
+    item.classList.remove("blue");
+  });
 
   playing = true;
 
@@ -105,10 +118,12 @@ function checkWinnerFor(player) {
     let pArray = pos[w].split(",");
     let hasWon = pArray.every((option) => square[option] === player);
     if (hasWon) {
+      for (let i of pArray) {
+        document.querySelector(`[data-item=${i}]`).style.color = "#32CD32";
+      }
       return true;
     }
   }
-
   return false;
 }
 

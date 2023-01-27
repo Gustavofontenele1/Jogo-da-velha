@@ -33,7 +33,6 @@ h1 {
     align-items: center;
     font-size: 60px;
     font-weight: bold;
-    color: #FFF;
     cursor: pointer;
 }
 .item:hover {
@@ -80,4 +79,10 @@ h1 {
     color: #FFF;
     padding: 10px;
     margin-top: 20px;
+}
+.red {
+    color: red;
+}
+.blue {
+    color: blue;
 }
