@@ -19,17 +19,11 @@ let playing = false;
 let placarX = 0;
 let placarO = 0;
 
-
 reset();
 
 // Eventos
 document.querySelector(".reset").addEventListener("click", reset);
-document.querySelector(".reset--placar").addEventListener("click", function() {
-  placarX = 0;
-  placarO = 0;
-  document.querySelector(".infoplacar--x").innerHTML = `x: ${placarX}`;
-  document.querySelector(".infoplacar--o").innerHTML = `o: ${placarO}`;
-  });
+document.querySelector(".reset--placar").addEventListener("click", resetPlacar);
 
 document.querySelectorAll(".item").forEach((item) => {
   item.addEventListener("click", itemClick);
@@ -49,6 +43,14 @@ function itemClick(event) {
     : event.target.classList.add("blue");
 }
 
+function resetPlacar() {
+  let infoPlacarX = document.querySelector(".infoplacar--x");
+  let infoPlacarO = document.querySelector(".infoplacar--o");
+  placarX = 0;
+  placarO = 0;
+  infoPlacarX.innerHTML = `x: ${placarX}`;
+  infoPlacarO.innerHTML = `o: ${placarO}`;
+}
 
 function reset() {
   warning = "";
@@ -150,11 +152,13 @@ function isFull() {
 }
 
 function checkPlacar() {
+  let infoPlacarX = document.querySelector(".infoplacar--x");
+  let infoPlacarO = document.querySelector(".infoplacar--o");
   if (checkWinnerFor("x")) {
     placarX++;
-    document.querySelector(".infoplacar--x").innerHTML = "x: " + placarX;
+    infoPlacarX.innerHTML = "x: " + placarX;
   } else if (checkWinnerFor("o")) {
     placarO++;
-    document.querySelector(".infoplacar--o").innerHTML = "o: " + placarO;
+    infoPlacarO.innerHTML = "o: " + placarO;
   }
 }
