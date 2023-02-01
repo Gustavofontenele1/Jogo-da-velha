@@ -72,8 +72,18 @@ h1 {
     color: #FFF;
     font-size: 20px;
 }
+.infoplacar--x {
+    text-align: center;
+    color: #FFF;
+    font-size: 20px;
+}
+.infoplacar--o {
+    text-align: center;
+    color: #FFF;
+    font-size: 20px;
+}
 
-.reset {
+.reset, .reset--placar {
     border: 1px solid #000;
     background-color: rgba(0, 0, 0, 0.2);
     color: #FFF;

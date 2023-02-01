@@ -16,11 +16,20 @@ let square = {
 let player = "x" || "o";
 let warning = "";
 let playing = false;
+let placarX = 0;
+let placarO = 0;
+
 
 reset();
 
 // Eventos
 document.querySelector(".reset").addEventListener("click", reset);
+document.querySelector(".reset--placar").addEventListener("click", function() {
+  placarX = 0;
+  placarO = 0;
+  document.querySelector(".infoplacar--x").innerHTML = `x: ${placarX}`;
+  document.querySelector(".infoplacar--o").innerHTML = `o: ${placarO}`;
+  });
 
 document.querySelectorAll(".item").forEach((item) => {
   item.addEventListener("click", itemClick);
@@ -39,6 +48,8 @@ function itemClick(event) {
     ? event.target.classList.add("red")
     : event.target.classList.add("blue");
 }
+
+
 function reset() {
   warning = "";
 
@@ -91,9 +102,11 @@ function checkGame() {
   if (checkWinnerFor("x")) {
     warning = 'O "x" venceu';
     playing = false;
+    checkPlacar();
   } else if (checkWinnerFor("o")) {
     warning = 'O "o" venceu';
     playing = false;
+    checkPlacar();
   } else if (isFull()) {
     warning = "Empate";
     playing = false;
@@ -134,4 +147,14 @@ function isFull() {
     }
   }
   return true;
+}
+
+function checkPlacar() {
+  if (checkWinnerFor("x")) {
+    placarX++;
+    document.querySelector(".infoplacar--x").innerHTML = "x: " + placarX;
+  } else if (checkWinnerFor("o")) {
+    placarO++;
+    document.querySelector(".infoplacar--o").innerHTML = "o: " + placarO;
+  }
 }
